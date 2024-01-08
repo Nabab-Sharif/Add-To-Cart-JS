@@ -1,0 +1,23 @@
+  [
+    {
+      "id": 1,
+      "name": "Chicken",
+      "image": "./images/Food1.jpeg",
+      "price": 69,
+      "text": "Chicken Fajitas served with rice and beans, tortillas, guacamole, salsa and sour cream Chicken Fajitas served wi..."
+    },
+    {
+      "id": 2,
+      "name": "Fajitas",
+      "image": "./images/Food2.jpeg",
+      "price": 169,
+      "text": "Chicken Fajitas served with rice and beans, tortillas, guacamole, salsa and sour cream Chicken Fajitas served wi..."
+    },
+    {
+      "id": 3,
+      "name": "Chicken Masala",
+      "image": "./images/Food3.webp",
+      "price": 269,
+      "text": "Chicken Fajitas served with rice and beans, tortillas, guacamole, salsa and sour cream Chicken Fajitas served wi..."
+    }
+  ]
