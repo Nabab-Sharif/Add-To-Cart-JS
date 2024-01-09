@@ -85,20 +85,15 @@ const addToCart = (product_id, positionClick) => {
       quantity: 1
     }]
 
-    if (positionClick.classList.contains('addCart')) {
-      positionClick.style.backgroundColor = '#5E6472';
-    }
-
   } else if (positionThisProductInCart < 0) {
 
     carts.push({
       product_id: product_id,
       quantity: 1
     });
-    if (positionClick.classList.contains('addCart')) {
-      positionClick.style.backgroundColor = '#5E6472';
-    }
 
+  } else {
+    alert("Already Added Cart")
   }
 
   addCartToHTML();
@@ -161,11 +156,11 @@ const addCartToHTML = () => {
 
 
 
-//..............quantity Increment , Decrement and Remove cart Part Start.............
+//..............quantity Increment and Decrement Part Start.............
 listCartHTML.addEventListener('click', (event) => {
   let positionClick = event.target;
 
-  if (positionClick.classList.contains('minus') || positionClick.classList.contains('plus') || positionClick.classList.contains('cart-remove')) {
+  if (positionClick.classList.contains('minus') || positionClick.classList.contains('plus')) {
     let product_id = positionClick.parentElement.parentElement.parentElement.dataset.id;
     let type = 'minus';
 
@@ -175,13 +170,13 @@ listCartHTML.addEventListener('click', (event) => {
       type = 'cart-remove'
     }
 
-    changeQuantityCart(product_id, type, positionClick);
+    changeQuantityCart(product_id, type);
   }
 
 })
 
 
-const changeQuantityCart = (product_id, type, positionClick) => {
+const changeQuantityCart = (product_id, type) => {
   let positionItemInCart = carts.findIndex((value) => value.product_id == product_id);
 
   if (positionItemInCart >= 0) {
@@ -203,12 +198,29 @@ const changeQuantityCart = (product_id, type, positionClick) => {
     }
 
   }
-  else if (type == 'cart-remove') {
-    carts.splice(positionItemInCart, 1)
-  }
 
   addCartToHTML();
-
 }
+//..............quantity Increment and Decrement Part End.............
 
-//..............quantity Increment , Decrement and Remove cart Part End.............
+
+//..............Cart Remove Part Start.............
+listCartHTML.addEventListener('click', (event) => {
+  let positionClick = event.target;
+  if (positionClick.classList.contains('cart-remove')) {
+    let product_id = positionClick.parentElement.parentElement.dataset.id;
+    removeCartItem(product_id);
+  }
+});
+
+
+const removeCartItem = (product_id) => {
+  let positionItemInCart = carts.findIndex((value) => value.product_id == product_id);
+
+  if (positionItemInCart >= 0) {
+    carts.splice(positionItemInCart, 1);
+    addCartToHTML();
+  }
+};
+//..............Cart Remove Part End.............
+
